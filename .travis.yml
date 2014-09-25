@@ -1,0 +1,15 @@
+language: ruby
+rvm:
+- 2.1.2
+deploy:
+  provider: heroku
+  api_key:
+    secure: O/QHRMz6sCv8uDRPQGpYZpPI3RH+EfmyT9EVMJxlYEeKS0Ka/F77jQ1BB97FcavCovfAnmZ7WySWiGQPRigGUWJBe83AttAdjpZ5ccfrXQl87vOk8fXmwILI3frh5gYyiZzvRMIGjOm+SWassl4nsHfb2BmrIZo+GY0gzeeEDJk=
+  app: protected-retreat-7623
+  on:
+    repo: Kj-sakai/video_site_enpit
+addons:
+ postgresql: "9.3"
+before_script:
+ - psql -c 'create database travis_ci_test;' -U postgres
+ - cp config/database.yml.travis config/database.yml
